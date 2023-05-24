@@ -1,15 +1,16 @@
 const {Sequelize}=require('sequelize');
+require('dotenv').config();
 
 const db = new Sequelize({
-  host: 'dpg-chn3pl64dad21k49g8ng-a.oregon-postgres.render.com',
-  database: 'db_todos',
-  port: 5432,
-  username: 'ndrx',
-  password: 'Np6sYetl3lEe4yQzCcqgVWwh8GOjS15v',
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
   dialect: 'postgres',
   dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }
 });
 
-//postgres://ndrx:Np6sYetl3lEe4yQzCcqgVWwh8GOjS15v@dpg-chn3pl64dad21k49g8ng-a.oregon-postgres.render.com/db_todos
+
 
 module.exports = db;

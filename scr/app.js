@@ -1,8 +1,9 @@
 const express = require('express');
 const db = require('./utils/database')
 const Todos = require('./models/todos.model')
+require('dotenv').config()
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 app.use(express.json());
