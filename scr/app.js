@@ -9,11 +9,11 @@ app.use(express.json());
 
 db.authenticate()
   .then(() => console.log('DB Conectada'))
-  .catch(() => console.log(err));
+  .catch(error => console.log(error));
 
 db.sync()
   .then(() => console.log('DB sincronizada'))
-  .catch (() => console.log(err));
+  .catch (error => console.log(error));
 
 app.get('/', (req, res) => {
   res.status(200).json('Bienvenido al servidor')
