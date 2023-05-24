@@ -1,12 +1,10 @@
 const express = require('express');
 const db = require('./utils/database')
 const Todos = require('./models/todos.model')
+const cors = require('cors');
 require('dotenv').config()
 
 const PORT = process.env.PORT || 8000;
-
-const app = express();
-app.use(express.json());
 
 db.authenticate()
   .then(() => console.log('DB Conectada'))
@@ -15,6 +13,11 @@ db.authenticate()
 db.sync()
   .then(() => console.log('DB sincronizada'))
   .catch (error => console.log(error));
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.status(200).json('Bienvenido al servidor')
